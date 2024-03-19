@@ -1,0 +1,41 @@
+{
+  "name": "energize",
+  "version": "1.0.0",
+  "description": "a tool to show battery details",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "author": "Malick Tammal",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.2.2",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.energize.app",
+    "win": {
+      "target": "NSIS",
+      "icon": "./asset/App_icon.ico"
+    },
+    "directories": {
+      "output": "./release"
+    },
+    "extraFiles": [
+      {
+        "from": "./battery_ps",
+        "to": "battery_ps/",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "battery": "^1.0.1",
+    "electron-store": "^8.2.0",
+    "systeminformation": "^5.21.24"
+  }
+}

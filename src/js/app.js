@@ -1,0 +1,207 @@
+//! Close and Minimize function
+const closeBtn = document.querySelector(".close-btn");
+const minimizeBtn = document.querySelector(".minimize-btn");
+
+closeBtn.addEventListener("click", () => {
+  bridge.mainSys.closeApp();
+});
+minimizeBtn.addEventListener("click", () => {
+  bridge.mainSys.minimizeApp();
+});
+
+//! Settings panel function
+const settingsBtn = document.querySelector(".settings");
+const settingsBtnIcon = document.querySelector(".settings img");
+const settingsPanel = document.querySelector(".settings_panel");
+
+settingsBtn.addEventListener("mouseenter", () => {
+  settingsBtnIcon.src = "../asset/Setting_icon_colored.png";
+});
+settingsBtn.addEventListener("mouseleave", () => {
+  if (settingsPanel.classList.contains("hide")) {
+    settingsBtnIcon.src = "../asset/Setting_icon.png";
+  } else {
+    settingsBtnIcon.src = "../asset/Setting_icon_colored.png";
+  }
+});
+settingsBtn.addEventListener("click", () => {
+  settingsPanel.classList.toggle("hide");
+});
+
+//! Checking system battery info
+const checkBtn = document.querySelector(".check_btn");
+const loadingPage = document.querySelector(".loading_page");
+const batteryPage = document.querySelector(".battery_page");
+
+checkBtn.addEventListener("click", () => {
+  loadingPage.classList.remove("hide");
+  bridge.batterySys.checkPC();
+  getBatteryState();
+});
+
+const waves = document.querySelector(".waves");
+const percentBox = document.querySelector(".percent_box");
+const chargingPer = document.querySelector(".charging_per");
+const thunderIcon = document.querySelector(".thunder_icon");
+
+//! Getting battery state (percentage)
+const getBatteryState = async () => {
+  setInterval(async () => {
+    const batteryState = await bridge.batterySys.batteryState();
+
+    if (batteryState.charging === false) {
+      waves.classList.add("hide");
+      thunderIcon.classList.add("hide");
+    } else {
+      waves.classList.remove("hide");
+      thunderIcon.classList.remove("hide");
+    }
+
+    waves.style.bottom = `${batteryState.level * 100}%`;
+    percentBox.style.height = `${batteryState.level * 100}%`;
+
+    chargingPer.innerText = `${Math.round(batteryState.level * 100)}%`;
+  }, 1000);
+};
+
+const laptopModelDom = document.querySelector(".laptop_model");
+const batteryIDdom = document.querySelector(".battery_id");
+const batteryModel = document.querySelector(".battery_model");
+const serialNumberDom = document.querySelector(".serial_number");
+const cycleCountDom = document.querySelector(".cycle_count");
+const fullChargeCapacityDom = document.querySelector(".full_charge_capacity");
+const designCapacityDom = document.querySelector(".design_capacity");
+
+//! Getting battery data
+bridge.batterySys.batteryData(async (data) => {
+  const batteryInfo = await data;
+  batteryModel.innerText = batteryInfo.model;
+});
+
+//! Getting laptop model
+bridge.mainSys.laptopModel(async (data) => {
+  const laptopModel = await data;
+  laptopModelDom.innerText = laptopModel;
+});
+
+const boxOne = document.querySelector(".box_1");
+const brs = boxOne.getElementsByTagName("br");
+
+const batteryHealthNumDom = document.querySelector(".battery_health_num");
+const batteryHealthTxtDom = document.querySelector(".battery_health_txt");
+
+const boxTwo = document.querySelector(".box_2");
+
+const unsupportedDevice = document.querySelector(".unsupported_device");
+
+//! Getting battery data 2
+bridge.batterySys.batteryDataTwo((data) => {
+  const infoSplited = data.split("\n");
+
+  // Checking if system return data or not
+  if (infoSplited.length >= 5) {
+    // ~ Organizing data in variables
+    const filePath = infoSplited[0];
+    const designCapacity = infoSplited[3]
+      .split(" ")
+      .filter((item) => item != "");
+    const fullChargeCapacity = infoSplited[4]
+      .split(" ")
+      .filter((item) => item != "");
+    const cycleCount = infoSplited[6].split(" ").filter((item) => item != "");
+    const batteryID = infoSplited[7].split(" ").filter((item) => item != "");
+    const serialNumber = infoSplited[8].split(" ").filter((item) => item != "");
+
+    const batteryHealth = calcBatteryHealth(
+      fullChargeCapacity[2],
+      designCapacity[2]
+    );
+    const batteryHealthTxt = `${healthStatus(batteryHealth)}`;
+
+    batteryIDdom.innerText = `${batteryID[2]} ${batteryID[3]}`;
+    serialNumberDom.innerText = serialNumber[2];
+    cycleCountDom.innerText = cycleCount[2];
+    fullChargeCapacityDom.innerText = `${fullChargeCapacity[2]} mWh`;
+    designCapacityDom.innerText = `${designCapacity[2]} mWh`;
+
+    batteryHealthNumDom.innerText = `${batteryHealth}%`;
+    batteryHealthTxtDom.innerText = batteryHealthTxt;
+
+    boxTwo.style.background = healthStatusColor(batteryHealth);
+
+    setTimeout(() => {
+      loadingPage.classList.add("hide");
+      batteryPage.classList.remove("hide");
+    }, 1000);
+
+    // ? Loop to delete all <br> tags inside the box 2
+    let i = 0;
+    do {
+      brs[i].parentNode.removeChild(brs[i]);
+    } while (i < brs.length);
+  } else {
+    loadingPage.classList.add("hide");
+    unsupportedDevice.classList.remove("hide");
+  }
+});
+
+// ^ Function to add health status based on battery health percentage
+const healthStatus = (health) => {
+  if (health >= 90) {
+    return "GREAT";
+  } else if (health >= 70 && health < 90) {
+    return "OK";
+  } else if (health >= 50 && health < 70) {
+    return "LOW";
+  } else if (health >= 20 && health < 50) {
+    return "BAD";
+  } else {
+    return "Invalid Value";
+  }
+};
+
+// ^ Function to add health status color based on battery health percentage
+const healthStatusColor = (health) => {
+  if (health >= 90) {
+    return "#19c219";
+  } else if (health >= 70 && health < 90) {
+    return "#84c219";
+  } else if (health >= 50 && health < 70) {
+    return "#c2af19";
+  } else if (health >= 20 && health < 50) {
+    return "#c23819";
+  } else {
+    return "#000000";
+  }
+};
+
+// ^ Function to calculate battery health
+const calcBatteryHealth = (fChargeC, designC) => {
+  let batteryHealth = Math.round((fChargeC / designC) * 100);
+  return batteryHealth;
+};
+
+const radioButtons = document.querySelectorAll(".radio_button");
+radioButtons.forEach((radioButton) => {
+  radioButton.addEventListener("click", () => {
+    radioButton.classList.toggle("active");
+  });
+});
+
+// ^ Icons hover animation
+const websiteButton = document.querySelector(".website");
+const githubButton = document.querySelector(".github");
+
+websiteButton.addEventListener("mouseenter", () => {
+  websiteButton.src = "../asset/Website_icon_colored.svg";
+});
+websiteButton.addEventListener("mouseleave", () => {
+  websiteButton.src = "../asset/Website_icon.svg";
+});
+
+githubButton.addEventListener("mouseenter", () => {
+  githubButton.src = "../asset/Github_icon_colored.svg";
+});
+githubButton.addEventListener("mouseleave", () => {
+  githubButton.src = "../asset/Github_icon.svg";
+});
