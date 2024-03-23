@@ -72,12 +72,6 @@ const cycleCountDom = document.querySelector(".cycle_count");
 const fullChargeCapacityDom = document.querySelector(".full_charge_capacity");
 const designCapacityDom = document.querySelector(".design_capacity");
 
-//! Getting battery data
-bridge.batterySys.batteryData(async (data) => {
-  const batteryInfo = await data;
-  batteryModel.innerText = batteryInfo.model;
-});
-
 //! Getting laptop model
 bridge.mainSys.laptopModel(async (data) => {
   const laptopModel = await data;
@@ -94,56 +88,47 @@ const boxTwo = document.querySelector(".box_2");
 
 const unsupportedDevice = document.querySelector(".unsupported_device");
 
-//! Getting battery data 2
-bridge.batterySys.batteryDataTwo((data) => {
-  const infoSplited = data.split("\n");
-
-  // Checking if system return data or not
-  if (infoSplited.length >= 5) {
-    // ~ Organizing data in variables
-    const filePath = infoSplited[0];
-    const designCapacity = infoSplited[3]
-      .split(" ")
-      .filter((item) => item != "");
-    const fullChargeCapacity = infoSplited[4]
-      .split(" ")
-      .filter((item) => item != "");
-    const cycleCount = infoSplited[6].split(" ").filter((item) => item != "");
-    const batteryID = infoSplited[7].split(" ").filter((item) => item != "");
-    const serialNumber = infoSplited[8].split(" ").filter((item) => item != "");
-
-    const batteryHealth = calcBatteryHealth(
-      fullChargeCapacity[2],
-      designCapacity[2]
-    );
-    const batteryHealthTxt = `${healthStatus(batteryHealth)}`;
-
-    batteryIDdom.innerText = `${batteryID[2]} ${batteryID[3]}`;
-    serialNumberDom.innerText = serialNumber[2];
-    cycleCountDom.innerText = cycleCount[2];
-    fullChargeCapacityDom.innerText = `${fullChargeCapacity[2]} mWh`;
-    designCapacityDom.innerText = `${designCapacity[2]} mWh`;
-
-    batteryHealthNumDom.innerText = `${batteryHealth}%`;
-    batteryHealthTxtDom.innerText = batteryHealthTxt;
-
-    boxTwo.style.background = healthStatusColor(batteryHealth);
-
+//! Getting battery data
+bridge.batterySys.batteryData((data) => {
+  if (typeof data === "object") {
     setTimeout(() => {
+      console.log(data);
       loadingPage.classList.add("hide");
       batteryPage.classList.remove("hide");
-    }, 1000);
-
-    // ? Loop to delete all <br> tags inside the box 2
-    let i = 0;
-    do {
-      brs[i].parentNode.removeChild(brs[i]);
-    } while (i < brs.length);
+      batteryIDdom.innerText = data.batteryId;
+      batteryModel.innerText = data.serialNumber + data.batteryId;
+      serialNumberDom.innerText = data.serialNumber;
+      cycleCountDom.innerText = data.cycleCount;
+      fullChargeCapacityDom.innerText =
+        data.fullChargeCapacity + data.measureUnit;
+      designCapacityDom.innerText = data.designCapacity + data.measureUnit;
+      batteryHealthNumDom.innerText =
+        calcBatteryHealth(data.fullChargeCapacity, data.designCapacity) + "%";
+      batteryHealthTxtDom.innerText = healthStatus(
+        data.fullChargeCapacity,
+        data.designCapacity
+      );
+      boxTwo.style.background = healthStatusColor(
+        data.fullChargeCapacity,
+        data.designCapacity
+      );
+      // ? Loop to delete all <br> tags inside the box 2
+      let i = 0;
+      do {
+        brs[i].parentNode.removeChild(brs[i]);
+      } while (i < brs.length);
+    }, 3000);
   } else {
-    loadingPage.classList.add("hide");
+    console.log(data);
     unsupportedDevice.classList.remove("hide");
   }
 });
+
+// ^ Function to calculate battery health
+const calcBatteryHealth = (fChargeC, designC) => {
+  let batteryHealth = Math.round((fChargeC / designC) * 100);
+  return batteryHealth;
+};
 
 // ^ Function to add health status based on battery health percentage
 const healthStatus = (health) => {
@@ -173,12 +158,6 @@ const healthStatusColor = (health) => {
   } else {
     return "#000000";
   }
-};
-
-// ^ Function to calculate battery health
-const calcBatteryHealth = (fChargeC, designC) => {
-  let batteryHealth = Math.round((fChargeC / designC) * 100);
-  return batteryHealth;
 };
 
 const radioButtons = document.querySelectorAll(".radio_button");

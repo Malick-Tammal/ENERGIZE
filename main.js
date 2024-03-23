@@ -1,9 +1,11 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const ipc = ipcMain;
 const path = require("path");
-const exec = require("child_process").exec;
-const si = require("systeminformation");
-const battery = require("battery");
+const {
+  psBatteryData,
+  getLaptopModel,
+  getBatteryState,
+} = require("./battery.js");
 
 let mainWin;
 const appName = "ENERGIZE";
@@ -39,32 +41,25 @@ ipc.on("minimize_app", () => {
   mainWin.minimize();
 });
 
-const execute = (command, callback) => {
-  exec(command, (error, stdout, stderr) => {
-    callback(stdout);
-  });
-};
-
 ipc.on("check_pc", (event) => {
-  execute(
-    "powershell -executionpolicy bypass -File ./battery_ps/get_battery_health.PS1",
-    (output) => {
-      event.sender.send("battery_data_2", output);
-    }
-  );
+  psBatteryData
+    .then((data) => {
+      event.sender.send("battery_data", data);
+    })
+    .catch((error) => {
+      event.sender.send("battery_data", error);
+    });
 
-  si.battery().then((data) => {
-    event.sender.send("battery_data", data);
-  });
-
-  si.system().then((data) => {
-    const laptopModel = `${data.manufacturer} ${data.model}`;
-    event.sender.send("laptop_model", laptopModel);
-  });
+  getLaptopModel
+    .then((data) => {
+      event.sender.send("laptop_model", data);
+    })
+    .catch((err) => {
+      event.sender.send("laptop_model", err);
+    });
 
   ipc.handle("battery_state", async () => {
-    const { level, charging } = await battery();
-    const data = { level, charging };
+    const data = await getBatteryState();
     return data;
   });
 });
