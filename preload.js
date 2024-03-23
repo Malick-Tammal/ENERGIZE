@@ -13,8 +13,6 @@ const API = {
     batteryData: (callback) =>
       ipc.on("battery_data", (event, data) => callback(data)),
     batteryState: () => ipc.invoke("battery_state"),
-    batteryDataTwo: (callback) =>
-      ipc.on("battery_data_2", (event, data) => callback(data)),
   },
 };
 
