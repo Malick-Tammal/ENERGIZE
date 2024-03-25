@@ -126,7 +126,7 @@ nav.top_bar {
 .bottom_row {
   align-items: center;
 }
-.check_btn {
+.scan_btn {
   margin-top: 2rem;
   background: linear-gradient(
     90deg,
@@ -140,7 +140,7 @@ nav.top_bar {
   transition: all 0.3s ease;
   overflow: hidden;
 }
-.check_btn img {
+.scan_btn img {
   width: 1.7rem;
   position: absolute;
   left: 50%;
@@ -150,10 +150,10 @@ nav.top_bar {
   visibility: hidden;
   transition: all 0.3s ease;
 }
-.check_btn:hover {
+.scan_btn:hover {
   color: transparent;
 }
-.check_btn:hover > img {
+.scan_btn:hover > img {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, -50%);
@@ -392,7 +392,7 @@ svg.waves.hide {
 .con:first-of-type {
   margin-top: 0;
 }
-.seperator {
+.separator {
   width: 2px;
   height: 100%;
   border-radius: 2px;
@@ -400,7 +400,7 @@ svg.waves.hide {
   position: absolute;
   left: 60%;
   transform: translate(-50%);
-  opacity: 0.7;
+  opacity: 0.3;
 }
 .radio_button {
   width: 2.5rem;
@@ -455,7 +455,7 @@ svg.waves.hide {
 .about_social img {
   cursor: pointer;
 }
-.big_seperator {
+.big_separator {
   width: 70%;
   height: 2px;
   position: absolute;
@@ -464,5 +464,5 @@ svg.waves.hide {
   transform: translate(-50%);
   background: var(--white-color);
   border-radius: 1rem;
-  opacity: 0.6;
+  opacity: 0.3;
 }
