@@ -1,11 +1,8 @@
+console.time("app_startup_time"); // 670ms
+
 const { app, BrowserWindow, ipcMain } = require("electron");
 const ipc = ipcMain;
 const path = require("path");
-const {
-  psBatteryData,
-  getLaptopModel,
-  getBatteryState,
-} = require("./battery.js");
 
 let mainWin;
 const appName = "ENERGIZE";
@@ -23,11 +20,12 @@ const createMainWin = () => {
     },
   });
   mainWin.loadFile("./src/index.html");
-  //mainWin.webContents.openDevTools({ mode: "detach" });
+  mainWin.webContents.openDevTools({ mode: "detach" });
 };
 
 app.whenReady().then(() => {
   createMainWin();
+  console.timeEnd("app_startup_time");
 });
 
 app.on("window-all-closed", () => {
@@ -41,7 +39,13 @@ ipc.on("minimize_app", () => {
   mainWin.minimize();
 });
 
-ipc.on("check_pc", (event) => {
+ipc.on("scan_pc", (event) => {
+  const {
+    psBatteryData,
+    getLaptopModel,
+    getBatteryState,
+  } = require("./lib/battery.js");
+
   psBatteryData
     .then((data) => {
       event.sender.send("battery_data", data);

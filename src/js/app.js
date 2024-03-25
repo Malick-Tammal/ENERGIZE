@@ -29,13 +29,13 @@ settingsBtn.addEventListener("click", () => {
 });
 
 //! Checking system battery info
-const checkBtn = document.querySelector(".check_btn");
+const scanBtn = document.querySelector(".scan_btn");
 const loadingPage = document.querySelector(".loading_page");
 const batteryPage = document.querySelector(".battery_page");
 
-checkBtn.addEventListener("click", () => {
+scanBtn.addEventListener("click", () => {
   loadingPage.classList.remove("hide");
-  bridge.batterySys.checkPC();
+  bridge.batterySys.scanPC();
   getBatteryState();
 });
 
@@ -78,9 +78,6 @@ bridge.mainSys.laptopModel(async (data) => {
   laptopModelDom.innerText = laptopModel;
 });
 
-const boxOne = document.querySelector(".box_1");
-const brs = boxOne.getElementsByTagName("br");
-
 const batteryHealthNumDom = document.querySelector(".battery_health_num");
 const batteryHealthTxtDom = document.querySelector(".battery_health_txt");
 
@@ -93,8 +90,6 @@ bridge.batterySys.batteryData((data) => {
   if (typeof data === "object") {
     setTimeout(() => {
       console.log(data);
-      loadingPage.classList.add("hide");
-      batteryPage.classList.remove("hide");
       batteryIDdom.innerText = data.batteryId;
       batteryModel.innerText = data.serialNumber + data.batteryId;
       serialNumberDom.innerText = data.serialNumber;
@@ -112,12 +107,10 @@ bridge.batterySys.batteryData((data) => {
         data.fullChargeCapacity,
         data.designCapacity
       );
-      // ? Loop to delete all <br> tags inside the box 2
-      let i = 0;
-      do {
-        brs[i].parentNode.removeChild(brs[i]);
-      } while (i < brs.length);
-    }, 3000);
+
+      loadingPage.classList.add("hide");
+      batteryPage.classList.remove("hide");
+    }, 1000);
   } else {
     console.log(data);
     unsupportedDevice.classList.remove("hide");

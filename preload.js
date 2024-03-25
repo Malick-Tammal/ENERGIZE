@@ -9,7 +9,7 @@ const API = {
       ipc.on("laptop_model", (event, data) => callback(data)),
   },
   batterySys: {
-    checkPC: () => ipc.send("check_pc"),
+    scanPC: () => ipc.send("scan_pc"),
     batteryData: (callback) =>
       ipc.on("battery_data", (event, data) => callback(data)),
     batteryState: () => ipc.invoke("battery_state"),
