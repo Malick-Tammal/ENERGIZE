@@ -402,7 +402,7 @@ svg.waves.hide {
   transform: translate(-50%);
   opacity: 0.3;
 }
-.radio_button {
+.radio_btn {
   width: 2.5rem;
   height: 1.3rem;
   background-color: var(--primary-color);
@@ -413,10 +413,10 @@ svg.waves.hide {
   cursor: pointer;
   transition: all 0.1s linear;
 }
-.radio_button.active {
+.radio_btn.active {
   background-color: var(--yallow-color);
 }
-.radio_button span {
+.radio_btn span {
   position: absolute;
   height: 1rem;
   width: 1rem;
@@ -425,7 +425,7 @@ svg.waves.hide {
   transition: all 0.1s linear;
   transform: translateX(0.2rem);
 }
-.radio_button.active span {
+.radio_btn.active span {
   transform: translateX(1.3rem);
 }
 .btn {
@@ -456,11 +456,11 @@ svg.waves.hide {
   cursor: pointer;
 }
 .big_separator {
-  width: 70%;
+  width: 90%;
   height: 2px;
   position: absolute;
   left: 50%;
-  top: 63%;
+  top: 60%;
   transform: translate(-50%);
   background: var(--white-color);
   border-radius: 1rem;

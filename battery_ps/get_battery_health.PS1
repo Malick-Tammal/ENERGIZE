@@ -1,4 +1,4 @@
-# Creating windows battery report than getting data from it
+# Creating windows battery report then getting data from it
 powercfg /batteryreport /XML /OUTPUT "./battery_ps/batteryreport.xml"
 Start-Sleep 1
 [xml]$b = Get-Content "./battery_ps/batteryreport.xml"
