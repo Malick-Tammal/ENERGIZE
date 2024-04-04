@@ -172,7 +172,6 @@ githubButton.addEventListener("mouseleave", () => {
 });
 
 const autoScanBtn = document.querySelector(".auto_scan");
-const scanBtnSetting = document.querySelector(".scan_btn_setting");
 const autoCheckBtn = document.querySelector(".auto_check");
 const checkUpdatesBtn = document.querySelector(".check_updates_btn");
 
@@ -215,11 +214,4 @@ autoCheckBtn.addEventListener("click", () => {
   } else {
     bridge.storageSys.autoUpdate(false);
   }
-});
-
-scanBtnSetting.addEventListener("click", () => {
-  settingsPanel.classList.add("hide");
-  loadingPage.classList.remove("hide");
-  bridge.batterySys.scanPC();
-  getBatteryState();
 });

@@ -73,7 +73,7 @@ nav.top_bar {
 }
 .left-panel {
   height: 100%;
-  width: 4rem;
+  width: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -81,7 +81,6 @@ nav.top_bar {
 .logo,
 .settings {
   display: flex;
-  border-radius: 0.4rem;
   overflow: hidden;
 }
 .settings {
@@ -89,7 +88,7 @@ nav.top_bar {
   cursor: pointer;
 }
 .logo img {
-  width: 1.5rem;
+  width: 1rem;
 }
 .settings img {
   width: 1.5rem;
@@ -122,6 +121,7 @@ nav.top_bar {
 .top_row {
   padding-top: 3rem;
   font-size: 0.85rem;
+  letter-spacing: 0.7px;
 }
 .bottom_row {
   align-items: center;
@@ -367,9 +367,8 @@ svg.waves.hide {
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 2rem 1rem;
-  box-shadow: 20px 10px 15px 1px rgb(0 0 0 / 18%);
+  box-shadow: 10px 4px 9px 0px rgb(0 0 0 / 12%);
   transform: translateY(0%);
   transition: all 0.8s cubic-bezier(0.23, 0.01, 0.23, 1.02);
 }
@@ -381,7 +380,7 @@ svg.waves.hide {
   width: 100%;
 }
 .top_panel {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 .con {
   display: flex;
@@ -444,13 +443,31 @@ svg.waves.hide {
 }
 .about {
   flex-direction: column;
-  align-items: start;
+}
+.about_text {
+  text-align: center;
+}
+.about_text h2 {
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+.about_text p {
+  line-height: 25px;
+}
+.settings_title {
+  position: relative;
+  top: -1rem;
+  letter-spacing: 1.5px;
+  font-family: "Poppins Regular";
+  opacity: 0.7;
+  font-size: 1.1rem;
 }
 .about_social {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 .about_social img {
   cursor: pointer;
@@ -460,9 +477,12 @@ svg.waves.hide {
   height: 2px;
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 57%;
   transform: translate(-50%);
   background: var(--white-color);
   border-radius: 1rem;
   opacity: 0.3;
+}
+.app_version {
+  letter-spacing: 2px;
 }
