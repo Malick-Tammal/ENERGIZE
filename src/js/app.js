@@ -153,13 +153,6 @@ const healthStatusColor = (health) => {
   }
 };
 
-const radioButtons = document.querySelectorAll(".radio_button");
-radioButtons.forEach((radioButton) => {
-  radioButton.addEventListener("click", () => {
-    radioButton.classList.toggle("active");
-  });
-});
-
 // ^ Icons hover animation
 const websiteButton = document.querySelector(".website");
 const githubButton = document.querySelector(".github");
@@ -176,4 +169,57 @@ githubButton.addEventListener("mouseenter", () => {
 });
 githubButton.addEventListener("mouseleave", () => {
   githubButton.src = "../asset/Github_icon.svg";
+});
+
+const autoScanBtn = document.querySelector(".auto_scan");
+const scanBtnSetting = document.querySelector(".scan_btn_setting");
+const autoCheckBtn = document.querySelector(".auto_check");
+const checkUpdatesBtn = document.querySelector(".check_updates_btn");
+
+document.addEventListener("DOMContentLoaded", () => {
+  bridge.storageSys.getUserSettings();
+});
+
+bridge.storageSys.userSettings((data) => {
+  console.log(data);
+  if (data.autoScan === true) {
+    autoScanBtn.classList.add("active");
+    loadingPage.classList.remove("hide");
+    setTimeout(() => {
+      bridge.batterySys.scanPC();
+      getBatteryState();
+    }, 1000);
+  } else {
+    autoScanBtn.classList.remove("active");
+  }
+
+  if (data.autoUpdate === true) {
+    autoCheckBtn.classList.add("active");
+  } else {
+    autoCheckBtn.classList.remove("active");
+  }
+});
+
+autoScanBtn.addEventListener("click", () => {
+  autoScanBtn.classList.toggle("active");
+  if (autoScanBtn.classList.contains("active")) {
+    bridge.storageSys.autoScan(true);
+  } else {
+    bridge.storageSys.autoScan(false);
+  }
+});
+autoCheckBtn.addEventListener("click", () => {
+  autoCheckBtn.classList.toggle("active");
+  if (autoCheckBtn.classList.contains("active")) {
+    bridge.storageSys.autoUpdate(true);
+  } else {
+    bridge.storageSys.autoUpdate(false);
+  }
+});
+
+scanBtnSetting.addEventListener("click", () => {
+  settingsPanel.classList.add("hide");
+  loadingPage.classList.remove("hide");
+  bridge.batterySys.scanPC();
+  getBatteryState();
 });

@@ -50,8 +50,8 @@ ipc.on("scan_pc", (event) => {
     .then((data) => {
       event.sender.send("battery_data", data);
     })
-    .catch((error) => {
-      event.sender.send("battery_data", error);
+    .catch((err) => {
+      event.sender.send("battery_data", err);
     });
 
   getLaptopModel
@@ -66,4 +66,19 @@ ipc.on("scan_pc", (event) => {
     const data = await getBatteryState();
     return data;
   });
+});
+
+ipc.on("get_user_settings", (event) => {
+  const { getData } = require("./lib/settings.js");
+  event.sender.send("user_settings", getData());
+});
+
+ipc.on("auto_scan", (args, data) => {
+  const { saveData } = require("./lib/settings.js");
+  saveData({ autoScan: data });
+});
+
+ipc.on("auto_update", (args, data) => {
+  const { saveData } = require("./lib/settings.js");
+  saveData({ autoUpdate: data });
 });

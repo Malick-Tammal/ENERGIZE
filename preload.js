@@ -14,6 +14,13 @@ const API = {
       ipc.on("battery_data", (event, data) => callback(data)),
     batteryState: () => ipc.invoke("battery_state"),
   },
+  storageSys: {
+    getUserSettings: () => ipc.send("get_user_settings"),
+    userSettings: (callback) =>
+      ipc.on("user_settings", (event, data) => callback(data)),
+    autoScan: (data) => ipc.send("auto_scan", data),
+    autoUpdate: (data) => ipc.send("auto_update", data),
+  },
 };
 
 contextBridge.exposeInMainWorld("bridge", API);
