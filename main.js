@@ -70,7 +70,6 @@ ipc.on("scan_pc", (event) => {
 
 ipc.on("get_user_settings", (event) => {
   const { getData } = require("./lib/settings.js");
-  console.log(getData());
   event.sender.send("user_settings", getData());
 });
 
