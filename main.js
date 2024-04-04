@@ -1,4 +1,4 @@
-console.time("app_startup_time"); // 670ms / new is 180ms / steel optimizing the code
+console.time("app_startup_time"); // 670ms
 
 const { app, BrowserWindow, ipcMain } = require("electron");
 const ipc = ipcMain;
