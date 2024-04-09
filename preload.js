@@ -1,3 +1,11 @@
+/*
+    ==============================
+    ==============================
+    ========= Preload js =========
+    ========== ENERGIZE ==========
+    ==============================
+*/
+
 const { contextBridge, ipcRenderer } = require("electron");
 const ipc = ipcRenderer;
 

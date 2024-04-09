@@ -1,3 +1,11 @@
+/*
+    ==============================
+    ==============================
+    ========== Main js ===========
+    ========== ENERGIZE ==========
+    ==============================
+*/
+
 console.time("app_startup_time"); // improve loading speed => /old 670ms / new 180ms
 
 const { app, BrowserWindow, ipcMain } = require("electron");
@@ -22,8 +30,10 @@ const createMainWin = () => {
     },
   });
   mainWin.loadFile("./src/index.html");
+  // Dev tools
   if (isDev) mainWin.webContents.openDevTools({ mode: "detach" });
 
+  // Sending app name / version
   mainWin.webContents.send("app_version", app.getVersion());
   mainWin.webContents.send("app_name", appName);
 };
@@ -37,13 +47,17 @@ app.on("window-all-closed", () => {
   app.quit();
 });
 
+// Close the app
 ipc.on("close_app", () => {
   app.quit();
 });
+
+// Minimize the app
 ipc.on("minimize_app", () => {
   mainWin.minimize();
 });
 
+// Getting battery info and sending it to renderer (ui)==\\
 ipc.on("scan_pc", (event) => {
   const {
     psBatteryData,
@@ -72,17 +86,20 @@ ipc.on("scan_pc", (event) => {
     return data;
   });
 });
+//=======================================================\\
 
+// Getting user settings from settings.js==\\
 ipc.on("get_user_settings", (event) => {
   const { getSettings } = require("./lib/settings.js");
   event.sender.send("user_settings", getSettings());
 });
+//=========================================\\
 
+// Saving user settings
 ipc.on("auto_scan", (args, data) => {
   const { saveSettings } = require("./lib/settings.js");
   saveSettings({ autoScan: data });
 });
-
 ipc.on("auto_update", (args, data) => {
   const { saveSettings } = require("./lib/settings.js");
   saveSettings({ autoUpdate: data });
