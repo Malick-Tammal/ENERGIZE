@@ -1,15 +1,15 @@
 {
   "name": "energize",
   "version": "1.0.0",
-  "description": "a tool to show battery details",
+  "description": "Get instant insights into your laptop battery's health with our diagnostic tool",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "dist": "electron-builder"
   },
   "author": "Malick Tammal",
   "license": "MIT",
+  "repository": "https://github.com/ADAMSKI-DZ/ENERGIZE.git",
   "devDependencies": {
     "electron": "^28.2.2",
     "electron-builder": "^24.9.1"

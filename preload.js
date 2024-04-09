@@ -5,6 +5,9 @@ const API = {
   mainSys: {
     closeApp: () => ipc.send("close_app"),
     minimizeApp: () => ipc.send("minimize_app"),
+    appName: (callback) => ipc.on("app_name", (event, data) => callback(data)),
+    appVersion: (callback) =>
+      ipc.on("app_version", (event, data) => callback(data)),
     laptopModel: (callback) =>
       ipc.on("laptop_model", (event, data) => callback(data)),
   },

@@ -302,27 +302,25 @@ svg.waves.hide {
   background: #19c219;
   margin-bottom: 0rem;
 }
+.charging_con {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+}
 .charging_per {
   font-size: 2.5rem;
   font-family: "Poppins Bold";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 .thunder_icon {
-  position: absolute;
-  top: 50%;
-  left: 27%;
-  transform: translate(-50%, -50%);
   width: 2.3rem;
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.3 ease;
+  display: block;
 }
 .thunder_icon.hide {
-  opacity: 0;
-  visibility: hidden;
+  display: none;
 }
 .box_2 {
   align-items: center;

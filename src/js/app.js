@@ -215,3 +215,13 @@ autoCheckBtn.addEventListener("click", () => {
     bridge.storageSys.autoUpdate(false);
   }
 });
+
+const appVersionDom = document.querySelector(".app_version");
+bridge.mainSys.appVersion((data) => {
+  appVersionDom.innerText = `v${data}`;
+});
+
+const appTitle = document.querySelector(".app_title");
+bridge.mainSys.appName((data) => {
+  appTitle.innerText = data;
+});
