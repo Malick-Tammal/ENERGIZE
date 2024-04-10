@@ -468,6 +468,7 @@ svg.waves.hide {
   margin-bottom: 1.5rem;
 }
 .about_social img {
+  width: 3.2rem;
   cursor: pointer;
 }
 .big_separator {

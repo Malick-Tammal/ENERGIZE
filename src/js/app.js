@@ -58,13 +58,13 @@ const settingsBtnIcon = document.querySelector(".settings img");
 const settingsPanel = document.querySelector(".settings_panel");
 
 settingsBtn.addEventListener("mouseenter", () => {
-  settingsBtnIcon.src = "../asset/Setting_icon_colored.png";
+  settingsBtnIcon.src = "../asset/icons/Setting_icon_colored.png";
 });
 settingsBtn.addEventListener("mouseleave", () => {
   if (settingsPanel.classList.contains("hide")) {
-    settingsBtnIcon.src = "../asset/Setting_icon.png";
+    settingsBtnIcon.src = "../asset/icons/Setting_icon.png";
   } else {
-    settingsBtnIcon.src = "../asset/Setting_icon_colored.png";
+    settingsBtnIcon.src = "../asset/icons/Setting_icon_colored.png";
   }
 });
 settingsBtn.addEventListener("click", () => {
@@ -268,16 +268,16 @@ const websiteButton = document.querySelector(".website");
 const githubButton = document.querySelector(".github");
 
 websiteButton.addEventListener("mouseenter", () => {
-  websiteButton.src = "../asset/Website_icon_colored.svg";
+  websiteButton.src = "../asset/icons/Website_icon_colored.png";
 });
 websiteButton.addEventListener("mouseleave", () => {
-  websiteButton.src = "../asset/Website_icon.svg";
+  websiteButton.src = "../asset/icons/Website_icon.png";
 });
 
 githubButton.addEventListener("mouseenter", () => {
-  githubButton.src = "../asset/Github_icon_colored.svg";
+  githubButton.src = "../asset/icons/Github_icon_colored.png";
 });
 githubButton.addEventListener("mouseleave", () => {
-  githubButton.src = "../asset/Github_icon.svg";
+  githubButton.src = "../asset/icons/Github_icon.png";
 });
 //===========================================================\\
