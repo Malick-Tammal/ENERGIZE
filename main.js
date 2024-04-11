@@ -32,10 +32,6 @@ const createMainWin = () => {
   mainWin.loadFile("./src/index.html");
   // Dev tools
   if (isDev) mainWin.webContents.openDevTools({ mode: "detach" });
-
-  // Sending app name / version
-  mainWin.webContents.send("app_version", app.getVersion());
-  mainWin.webContents.send("app_name", appName);
 };
 
 app.whenReady().then(() => {
@@ -55,6 +51,12 @@ ipc.on("close_app", () => {
 // Minimize the app
 ipc.on("minimize_app", () => {
   mainWin.minimize();
+});
+
+// Getting / Sending app name | version
+ipc.on("get_app_data", (event) => {
+  event.sender.send("app_name", appName);
+  event.sender.send("app_version", app.getVersion());
 });
 
 // Getting battery info and sending it to renderer (ui)==\\

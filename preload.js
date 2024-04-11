@@ -13,6 +13,7 @@ const API = {
   mainSys: {
     closeApp: () => ipc.send("close_app"),
     minimizeApp: () => ipc.send("minimize_app"),
+    getAppData: () => ipc.send("get_app_data"),
     appName: (callback) => ipc.on("app_name", (event, data) => callback(data)),
     appVersion: (callback) =>
       ipc.on("app_version", (event, data) => callback(data)),

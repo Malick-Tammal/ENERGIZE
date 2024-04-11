@@ -77,6 +77,7 @@ const checkUpdatesBtn = document.querySelector(".check_updates_btn");
 
 document.addEventListener("DOMContentLoaded", () => {
   bridge.storageSys.getUserSettings();
+  bridge.mainSys.getAppData();
 });
 
 bridge.storageSys.userSettings((data) => {
