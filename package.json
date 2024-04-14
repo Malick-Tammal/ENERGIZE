@@ -5,11 +5,15 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder"
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
   },
   "author": "Malick Tammal",
   "license": "MIT",
-  "repository": "https://github.com/ADAMSKI-DZ/ENERGIZE.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ADAMSKI-DZ/ENERGIZE.git"
+  },
   "devDependencies": {
     "electron": "^28.2.2",
     "electron-builder": "^24.9.1"
@@ -18,7 +22,11 @@
     "appId": "com.energize.app",
     "win": {
       "target": "NSIS",
-      "icon": "./asset/App_icon.ico"
+      "icon": "./asset/icons/App_icon.ico"
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false
     },
     "directories": {
       "output": "./release"

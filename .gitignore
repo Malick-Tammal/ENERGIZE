@@ -2,3 +2,4 @@ node_modules
 release
 release_old
 battery_ps/batteryreport.xml
+electron-builder.yml
