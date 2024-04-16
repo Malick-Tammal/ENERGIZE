@@ -19,7 +19,6 @@ const API = {
       ipc.on("app_version", (event, data) => callback(data)),
     laptopModel: (callback) =>
       ipc.on("laptop_model", (event, data) => callback(data)),
-    checkUpdates: () => ipc.send("check_updates"),
   },
   batterySys: {
     scanPC: () => ipc.send("scan_pc"),
@@ -33,6 +32,10 @@ const API = {
       ipc.on("user_settings", (event, data) => callback(data)),
     autoScan: (data) => ipc.send("auto_scan", data),
     autoUpdate: (data) => ipc.send("auto_update", data),
+  },
+  updateSys: {
+    checkUpdates: () => ipc.send("check_updates"),
+    checkUpdatesUser: () => ipc.send("check_updates_user"),
   },
 };
 

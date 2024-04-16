@@ -73,7 +73,6 @@ settingsBtn.addEventListener("click", () => {
 
 const autoScanBtn = document.querySelector(".auto_scan");
 const autoCheckBtn = document.querySelector(".auto_check");
-const checkUpdatesBtn = document.querySelector(".check_updates_btn");
 
 document.addEventListener("DOMContentLoaded", () => {
   bridge.storageSys.getUserSettings();
@@ -284,5 +283,10 @@ githubButton.addEventListener("mouseleave", () => {
 //===========================================================\\
 
 document.addEventListener("DOMContentLoaded", () => {
-  bridge.mainSys.checkUpdates();
+  bridge.updateSys.checkUpdates();
+});
+
+const checkUpdatesBtn = document.querySelector(".check_updates");
+checkUpdatesBtn.addEventListener("click", () => {
+  bridge.updateSys.checkUpdatesUser();
 });

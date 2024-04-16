@@ -117,3 +117,8 @@ ipc.on("check_updates", () => {
     checkUpdates();
   }
 });
+
+ipc.on("check_updates_user", () => {
+  const { checkUpdates } = require("./lib/update.js");
+  checkUpdates();
+});
