@@ -22,7 +22,8 @@
     "appId": "com.energize.app",
     "win": {
       "target": "NSIS",
-      "icon": "./asset/icons/App_icon.ico"
+      "icon": "./asset/icons/App_icon.ico",
+      "publisherName": "Malick Tammal"
     },
     "nsis": {
       "allowToChangeInstallationDirectory": true,
