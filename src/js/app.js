@@ -282,3 +282,7 @@ githubButton.addEventListener("mouseleave", () => {
   githubButton.src = "../asset/icons/Github_icon.png";
 });
 //===========================================================\\
+
+document.addEventListener("DOMContentLoaded", () => {
+  bridge.mainSys.checkUpdates();
+});

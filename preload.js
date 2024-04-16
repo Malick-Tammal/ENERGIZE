@@ -19,6 +19,7 @@ const API = {
       ipc.on("app_version", (event, data) => callback(data)),
     laptopModel: (callback) =>
       ipc.on("laptop_model", (event, data) => callback(data)),
+    checkUpdates: () => ipc.send("check_updates"),
   },
   batterySys: {
     scanPC: () => ipc.send("scan_pc"),

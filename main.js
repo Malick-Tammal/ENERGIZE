@@ -11,6 +11,7 @@ console.time("app_startup_time"); // improve loading speed => /old 670ms / new 1
 const { app, BrowserWindow, ipcMain } = require("electron");
 const ipc = ipcMain;
 const path = require("path");
+const { checkUpdates, installUpdate } = require("./lib/update.js");
 
 let mainWin;
 const appName = "ENERGIZE";
@@ -40,6 +41,7 @@ app.whenReady().then(() => {
 });
 
 app.on("window-all-closed", () => {
+  installUpdate();
   app.quit();
 });
 
@@ -105,4 +107,11 @@ ipc.on("auto_scan", (args, data) => {
 ipc.on("auto_update", (args, data) => {
   const { saveSettings } = require("./lib/settings.js");
   saveSettings({ autoUpdate: data });
+});
+
+ipc.on("check_updates", () => {
+  const { getSettings } = require("./lib/settings.js");
+  if (getSettings().autoUpdate === true) {
+    checkUpdates();
+  }
 });
