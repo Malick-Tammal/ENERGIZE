@@ -33,6 +33,10 @@ const API = {
     autoScan: (data) => ipc.send("auto_scan", data),
     autoUpdate: (data) => ipc.send("auto_update", data),
   },
+  updateSys: {
+    checkUpdates: () => ipc.send("check_updates"),
+    checkUpdatesUser: () => ipc.send("check_updates_user"),
+  },
 };
 
 contextBridge.exposeInMainWorld("bridge", API);
