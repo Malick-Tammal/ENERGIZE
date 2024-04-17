@@ -15,8 +15,8 @@
     "url": "https://github.com/ADAMSKI-DZ/ENERGIZE.git"
   },
   "devDependencies": {
-    "electron": "^28.2.2",
-    "electron-builder": "^24.9.1"
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
   },
   "build": {
     "appId": "com.energize.app",
