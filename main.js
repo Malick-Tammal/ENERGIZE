@@ -93,12 +93,12 @@ ipc.on("scan_pc", (event) => {
 });
 //=======================================================\\
 
-// Getting user settings from settings.js==\\
+// Getting user settings from settings.js ==\\
 ipc.on("get_user_settings", (event) => {
   const { getSettings } = require("./lib/settings.js");
   event.sender.send("user_settings", getSettings());
 });
-//=========================================\\
+//==========================================\\
 
 // Saving user settings
 ipc.on("auto_scan", (args, data) => {
@@ -110,6 +110,7 @@ ipc.on("auto_update", (args, data) => {
   saveSettings({ autoUpdate: data });
 });
 
+// Checking for updates (if auto update is on) ======\\
 ipc.on("check_updates", () => {
   const { checkUpdates } = require("./lib/update.js");
   const { getSettings } = require("./lib/settings.js");
@@ -118,7 +119,9 @@ ipc.on("check_updates", () => {
   }
 });
 
+// Checking for updates when user click it
 ipc.on("check_updates_user", () => {
   const { checkUpdates } = require("./lib/update.js");
   checkUpdates();
 });
+//===================================================\\

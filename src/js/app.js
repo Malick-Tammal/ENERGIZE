@@ -282,6 +282,8 @@ githubButton.addEventListener("mouseleave", () => {
 });
 //===========================================================\\
 
+
+// Update listeners (click / auto) ===========================\\
 document.addEventListener("DOMContentLoaded", () => {
   bridge.updateSys.checkUpdates();
 });
@@ -290,3 +292,4 @@ const checkUpdatesBtn = document.querySelector(".check_updates");
 checkUpdatesBtn.addEventListener("click", () => {
   bridge.updateSys.checkUpdatesUser();
 });
+//===========================================================\\
