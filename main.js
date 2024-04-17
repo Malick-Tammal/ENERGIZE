@@ -6,7 +6,9 @@
     ==============================
 */
 
-console.time("app_startup_time"); // improve loading speed => /old 670ms / new 180ms
+require('v8-compile-cache');
+
+console.time("app_startup_time");
 
 const { app, BrowserWindow, ipcMain } = require("electron");
 const ipc = ipcMain;
@@ -25,6 +27,7 @@ const createMainWin = () => {
     frame: false,
     transparent: true,
     resizable: false,
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, "./preload.js"),
     },
@@ -32,6 +35,11 @@ const createMainWin = () => {
   mainWin.loadFile("./src/index.html");
   // Dev tools
   if (isDev) mainWin.webContents.openDevTools({ mode: "detach" });
+
+  mainWin.on("ready-to-show", () => {
+    mainWin.show();
+    console.timeEnd("app_startup_time");
+  });
 };
 
 app.whenReady().then(() => {
@@ -39,7 +47,6 @@ app.whenReady().then(() => {
   if (process.platform === "win32") {
     app.setAppUserModelId(appName);
   }
-  console.timeEnd("app_startup_time");
 });
 
 app.on("window-all-closed", () => {
