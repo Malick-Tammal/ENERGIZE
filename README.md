@@ -52,10 +52,13 @@ npm start
 - Cross platform support
 - ...
 
+## Issues
+- Working in just Windows
+
 ## More info
 
-ENERGIZE using [Battery_js](https://github.com/Malick-Tammal/Battery_JS) to get battery info<br>
-and thanks to [systemInformation](https://github.com/sebhildebrandt/systeminformation) using their util js
+ENERGIZE using [Battery_js](https://github.com/Malick-Tammal/Battery_JS) package to get battery info<br>
+and thanks to [systemInformation](https://github.com/sebhildebrandt/systeminformation) using their util.js
 
 ## Author
 
