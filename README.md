@@ -53,28 +53,28 @@ npm install
 npm start
 ```
 
-## Features
+## 🌟 Features
 
 - Get real time battery states
 - Check battery health (Accurate reads)
 - Get battery info (batteryId , batteryModel ....)
 
-## Features will added in the future
+## 🚀 Features will added
 
 - Battery graph bench
 - Cross platform support
 - ...
 
-## Issues
+## ❗ Issues
 
 - Working in just Windows
 
-## More info
+## 📑 More info
 
 ENERGIZE using [Battery_js](https://github.com/Malick-Tammal/Battery_JS) package to get battery info<br>
 and thanks to [systemInformation](https://github.com/sebhildebrandt/systeminformation) using their util.js
 
-## Author
+## 🖋️ Author
 
 🧑🏽 **Malick Tammal**
 
@@ -87,11 +87,11 @@ and thanks to [systemInformation](https://github.com/sebhildebrandt/systeminform
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Malick-Tammal/ENERGIZE/issues). You can also take a look at the [contributing guide](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors).
 
-## Show your support
+## 🔥 Show your support
 
 Give a ⭐️ if this project helped you!
 
-## 📝 License
+## 📜 License
 
 Copyright © 2024 [Malick Tammal](https://github.com/Malick-Tammal). All rights reserved.<br />
 Licensed under the [MIT license](https://github.com/Malick-Tammal/ENERGIZE?tab=MIT-1-ov-file).
