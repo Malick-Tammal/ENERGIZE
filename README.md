@@ -3,13 +3,26 @@
 </p>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+<a href="https://github.com/Malick-Tammal/ENERGIZE/graphs/contributors" target="_blank">
+  <img alt="Contributors" src="https://img.shields.io/github/contributors/Malick-Tammal/ENERGIZE.svg?style=for-the-badge">
+</a>
+<a href="https://github.com/Malick-Tammal/ENERGIZE/stargazers" target="_blank">
+  <img alt="Stargazers" src="https://img.shields.io/github/stars/Malick-Tammal/ENERGIZE.svg?style=for-the-badge">
+</a>
+<a href="https://github.com/Malick-Tammal/ENERGIZE/issues" target="_blank">
+  <img alt="Issues" src="https://img.shields.io/github/issues/Malick-Tammal/ENERGIZE.svg?style=for-the-badge">
+</a>
+<a href="https://github.com/Malick-Tammal/ENERGIZE/blob/main/LICENSE" target="_blank">
+  <img alt="License" src="https://img.shields.io/github/license/Malick-Tammal/ENERGIZE.svg?style=for-the-badge">
+</a>
+</p>
+
+<p align="center">
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.1-blue.svg?cacheSeconds=2592000" />
   <a href="https://enegize.netlify.app/docs" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
-  <a href="https://github.com/Malick-Tammal/ENERGIZE?tab=MIT-1-ov-file" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
+
 </p>
 
 > Meet Energize: Your laptop's essential battery diagnostic tool.Optimize performance, prolong battery life effortlessly.
@@ -20,7 +33,7 @@
 
 ## Usage
 
-Download the app [Latest release!]()
+Download the app [Latest release!](https://github.com/Malick-Tammal/ENERGIZE/releases/download/v1.0.1/energize-Setup-1.0.1.exe)
 
 For devs clone the repository
 
@@ -53,6 +66,7 @@ npm start
 - ...
 
 ## Issues
+
 - Working in just Windows
 
 ## More info
@@ -81,3 +95,16 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2024 [Malick Tammal](https://github.com/Malick-Tammal). All rights reserved.<br />
 Licensed under the [MIT license](https://github.com/Malick-Tammal/ENERGIZE?tab=MIT-1-ov-file).
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[contributors-url]: https://github.com/Malick-Tammal/ENERGIZE/graphs/contributors
+[contributors-shield]: https://img.shields.io/github/contributors/Malick-Tammal/ENERGIZE.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Malick-Tammal/ENERGIZE.svg?style=for-the-badge
+[stars-url]: https://github.com/Malick-Tammal/ENERGIZE/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Malick-Tammal/ENERGIZE.svg?style=for-the-badge
+[issues-url]: https://github.com/Malick-Tammal/ENERGIZE/issues
+[license-shield]: https://img.shields.io/github/license/Malick-Tammal/ENERGIZE.svg?style=for-the-badge
+[license-url]: https://github.com/Malick-Tammal/ENERGIZE/blob/main/LICENSE
+[version-shield]: https://img.shields.io/github/v/tag/Malick-Tammal/ENERGIZE
+[version-url]: https://github.com/Malick-Tammal/ENERGIZE/releases
