@@ -6,7 +6,7 @@
     ==============================
 */
 
-require('v8-compile-cache');
+require("v8-compile-cache");
 
 console.time("app_startup_time");
 
