@@ -89,7 +89,7 @@ npm start
 
 ## 📑 More info
 
-ENERGIZE using [Battery_js](https://github.com/Malick-Tammal/Battery_JS) package to get battery info<br>
+ENERGIZE using [battery_util](https://github.com/Malick-Tammal/battery_util) package to get battery info<br>
 and thanks to [systemInformation](https://github.com/sebhildebrandt/systeminformation) using their util.js
 
 ## 🖋️ Author
@@ -113,16 +113,3 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2024 [Malick Tammal](https://github.com/Malick-Tammal). All rights reserved.<br />
 Licensed under the [MIT license](https://github.com/Malick-Tammal/ENERGIZE?tab=MIT-1-ov-file).
-
-<!-- MARKDOWN LINKS & IMAGES -->
-
-[contributors-url]: https://github.com/Malick-Tammal/ENERGIZE/graphs/contributors
-[contributors-shield]: https://img.shields.io/github/contributors/Malick-Tammal/ENERGIZE.svg?style=for-the-badge
-[stars-shield]: https://img.shields.io/github/stars/Malick-Tammal/ENERGIZE.svg?style=for-the-badge
-[stars-url]: https://github.com/Malick-Tammal/ENERGIZE/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Malick-Tammal/ENERGIZE.svg?style=for-the-badge
-[issues-url]: https://github.com/Malick-Tammal/ENERGIZE/issues
-[license-shield]: https://img.shields.io/github/license/Malick-Tammal/ENERGIZE.svg?style=for-the-badge
-[license-url]: https://github.com/Malick-Tammal/ENERGIZE/blob/main/LICENSE
-[version-shield]: https://img.shields.io/github/v/tag/Malick-Tammal/ENERGIZE
-[version-url]: https://github.com/Malick-Tammal/ENERGIZE/releases
