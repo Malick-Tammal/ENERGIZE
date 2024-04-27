@@ -2,6 +2,21 @@
 <img src="./asset/images/Banner.png" width="500" alt="ENERGIZE banner" />
 </p>
 
+<p align="center">Meet Energize: Your laptop&#39;s essential battery diagnostic tool.Optimize performance, prolong battery life effortlessly.</p>
+
+<br>
+
+
+<p align="center">
+  <a href="https://github.com/Malick-Tammal/ENERGIZE/blob/main/CHANGELOG.md" target="_blank">Changelog<a>
+  -
+  <a href="https://github.com/Malick-Tammal/ENERGIZE/issues/new">Request feature<a>
+  -
+  <a href="https://github.com/Malick-Tammal/ENERGIZE/issues/new">Report bug<a>
+</p>
+
+<br>
+
 <p align="center">
 <a href="https://github.com/Malick-Tammal/ENERGIZE/graphs/contributors" target="_blank">
   <img alt="Contributors" src="https://img.shields.io/github/contributors/Malick-Tammal/ENERGIZE.svg?style=for-the-badge">
@@ -18,16 +33,19 @@
 </p>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://enegize.netlify.app/docs" target="_blank">
+  <a href="https://github.com/Malick-Tammal/ENERGIZE/releases" target="_blank">
+    <img alt="GIT Version" src="https://img.shields.io/github/v/release/Malick-Tammal/ENERGIZE" />
+  </a>
+  <a href="https://github.com/Malick-Tammal" target="_blank">
+    <img alt="caretaker" src="https://img.shields.io/badge/caretaker-malick--tammal-blue.svg?style=flat-square" />
+  </a>
+  <a href="https://github.com/Malick-Tammal/ENERGIZE/blob/main/README.md" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
-
+  <a href="https://github.com/Malick-Tammal/battery_util/graphs/commit-activity" target="_blank">
+    <img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
 </p>
-
-> Meet Energize: Your laptop's essential battery diagnostic tool.Optimize performance, prolong battery life effortlessly.
-
-### 🌐 [Website](https://enegize.netlify.app)
 
 ---
 
