@@ -43,10 +43,10 @@ const createMainWin = () => {
 };
 
 app.whenReady().then(() => {
-  createMainWin();
   if (process.platform === "win32") {
     app.setAppUserModelId(appName);
   }
+  createMainWin();
 });
 
 app.on("window-all-closed", () => {

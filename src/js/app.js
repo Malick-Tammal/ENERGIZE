@@ -12,7 +12,7 @@ console.log(
   "  | ____| \\ | | ____|  _ \\ / ___|_ _|__  / ____|\n",
   "  |  _| |  \\| |  _| | |_) | |  _ | |  / /|  _|  \n",
   "  | |___| |\\  | |___|  _ <| |_| || | / /_| |___ \n",
-  "  |_____|_| \\_|_____|_| \\_\\____|___/____|_____|\n",
+  "  |_____|_| \\_|_____|_| \\_\\____ |___/____|_____|\n",
   "                                                \n"
 );
 console.log(
@@ -52,6 +52,14 @@ minimizeBtn.addEventListener("click", () => {
 });
 //===========================================================\\
 
+// Getting data and evoking functions in main process =======\\
+document.addEventListener("DOMContentLoaded", () => {
+  bridge.storageSys.getUserSettings();
+  bridge.mainSys.getAppData();
+  bridge.updateSys.checkUpdates();
+});
+// ==========================================================\\
+
 // Settings panel functions (toggles / storage system) ======\\
 const settingsBtn = document.querySelector(".settings");
 const settingsBtnIcon = document.querySelector(".settings img");
@@ -73,11 +81,6 @@ settingsBtn.addEventListener("click", () => {
 
 const autoScanBtn = document.querySelector(".auto_scan");
 const autoCheckBtn = document.querySelector(".auto_check");
-
-document.addEventListener("DOMContentLoaded", () => {
-  bridge.storageSys.getUserSettings();
-  bridge.mainSys.getAppData();
-});
 
 bridge.storageSys.userSettings((data) => {
   console.log(data);
@@ -282,12 +285,7 @@ githubButton.addEventListener("mouseleave", () => {
 });
 //===========================================================\\
 
-
 // Update listeners (click / auto) ===========================\\
-document.addEventListener("DOMContentLoaded", () => {
-  bridge.updateSys.checkUpdates();
-});
-
 const checkUpdatesBtn = document.querySelector(".check_updates");
 checkUpdatesBtn.addEventListener("click", () => {
   bridge.updateSys.checkUpdatesUser();
