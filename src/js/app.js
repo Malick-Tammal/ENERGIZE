@@ -138,6 +138,7 @@ const loadingPage = document.querySelector(".loading_page");
 const batteryPage = document.querySelector(".battery_page");
 
 scanBtn.addEventListener("click", () => {
+  console.time("Getting_data_time");
   console.log("Started scanning...");
   loadingPage.classList.remove("hide");
   bridge.batterySys.scanPC();
@@ -182,7 +183,6 @@ const designCapacityDom = document.querySelector(".design_capacity");
 
 // Getting laptop model
 bridge.mainSys.laptopModel((data) => {
-  console.log(`Scanning completed`);
   console.log(`Laptop model ${data}`);
   laptopModelDom.innerText = data;
 });
@@ -197,17 +197,17 @@ const unsupportedDevice = document.querySelector(".unsupported_device");
 bridge.batterySys.batteryData((data) => {
   if (typeof data === "object") {
     setTimeout(() => {
-      console.log("Battery info =====================//");
+      console.log("Battery info :");
       console.log(data);
-      batteryIDdom.innerText = data.batteryId;
-      batteryModel.innerText = data.serialNumber + data.batteryId;
+
+      batteryIDdom.innerText = data.id;
+      batteryModel.innerText = data.serialNumber + data.id;
       serialNumberDom.innerText = data.serialNumber;
       cycleCountDom.innerText = data.cycleCount;
       fullChargeCapacityDom.innerText =
         data.fullChargeCapacity + data.measureUnit;
       designCapacityDom.innerText = data.designCapacity + data.measureUnit;
-      batteryHealthNumDom.innerText =
-        calcBatteryHealth(data.fullChargeCapacity, data.designCapacity) + "%";
+      batteryHealthNumDom.innerText = `${data.health}%`;
       batteryHealthTxtDom.innerText = healthStatus(
         data.fullChargeCapacity,
         data.designCapacity
@@ -219,19 +219,16 @@ bridge.batterySys.batteryData((data) => {
 
       loadingPage.classList.add("hide");
       batteryPage.classList.remove("hide");
+
+      console.log(`Scanning completed`);
+
+      console.timeEnd("Getting_data_time");
     }, 200);
   } else {
     console.log(data);
     unsupportedDevice.classList.remove("hide");
   }
 });
-//===========================================================\\
-
-// Calculating battery health ===============================\\
-const calcBatteryHealth = (fChargeC, designC) => {
-  let batteryHealth = Math.round((fChargeC / designC) * 100);
-  return batteryHealth;
-};
 //===========================================================\\
 
 // Adding health status based on battery health percentage ==\\
