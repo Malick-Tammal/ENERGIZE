@@ -12,10 +12,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ADAMSKI-DZ/ENERGIZE.git"
+    "url": "https://github.com/Malick-Tammal/ENERGIZE.git"
   },
   "devDependencies": {
-    "electron": "^30.0.0",
+    "electron": "^30.0.1",
     "electron-builder": "^24.13.3"
   },
   "build": {

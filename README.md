@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.1-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://enegize.netlify.app/docs" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -33,7 +33,7 @@
 
 ## Usage
 
-Download the app [Latest release!](https://github.com/Malick-Tammal/ENERGIZE/releases/download/v1.0.1/energize-Setup-1.0.1.exe)
+Download the app [Latest release!](https://github.com/Malick-Tammal/ENERGIZE/releases/download/v1.0.0/energize-Setup-1.0.0.exe)
 
 For devs clone the repository
 
