@@ -26,7 +26,7 @@
     },
     "nsis": {
       "allowToChangeInstallationDirectory": false,
-      "license": "./build/license.html"
+      "license": "license"
     },
     "directories": {
       "output": "./release"
