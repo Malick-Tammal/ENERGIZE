@@ -51,7 +51,7 @@
 
 ## Usage
 
-Download the app [Latest release!](https://github.com/Malick-Tammal/ENERGIZE/releases/download/v1.0.0/energize-Setup-1.0.1.exe)
+Download the app [Latest release!](https://github.com/Malick-Tammal/ENERGIZE/releases/download/v1.0.1/energize-Setup-1.0.1.exe)
 
 For devs clone the repository
 
