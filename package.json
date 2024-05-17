@@ -1,6 +1,6 @@
 {
   "name": "energize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get instant insights into your laptop battery's health with our diagnostic tool",
   "main": "main.js",
   "scripts": {

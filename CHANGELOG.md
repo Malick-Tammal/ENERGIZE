@@ -14,6 +14,7 @@
 
 ## All version (history)
 
-| Version | Date      | Comment         |
-| ------- | --------- | --------------- |
-| 1.0.0   | 2024-4-24 | Initial release |
+| Version |   Date    | Comment               |
+| ------- | --------- | --------------------- |
+|  1.0.1  | 2024-5-17 | Updating dependencies |
+|  1.0.0  | 2024-4-24 | Initial release       |
