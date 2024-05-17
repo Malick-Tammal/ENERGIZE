@@ -72,12 +72,12 @@ ipc.on("get_app_data", (event) => {
 // Getting battery info and sending it to renderer (ui)==\\
 ipc.on("scan_pc", (event) => {
   const {
-    psBatteryData,
+    getBatteryInfo,
     getLaptopModel,
     getBatteryState,
   } = require("./lib/battery.js");
 
-  psBatteryData
+  getBatteryInfo
     .then((data) => {
       event.sender.send("battery_data", data);
     })
