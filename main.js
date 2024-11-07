@@ -27,7 +27,6 @@ const createMainWin = () => {
     frame: false,
     transparent: true,
     resizable: false,
-    show: false,
     webPreferences: {
       preload: path.join(__dirname, "./preload.js"),
     },
@@ -36,10 +35,7 @@ const createMainWin = () => {
   // Dev tools
   if (isDev) mainWin.webContents.openDevTools({ mode: "detach" });
 
-  mainWin.on("ready-to-show", () => {
-    mainWin.show();
-    console.timeEnd("app_startup_time");
-  });
+  console.timeEnd("app_startup_time");
 };
 
 app.whenReady().then(() => {

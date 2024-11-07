@@ -146,7 +146,7 @@ scanBtn.addEventListener("click", () => {
 });
 //=============================================================\\
 
-// Getting battery state (percentage) =======================\\
+// Getting battery state (percentage , isCharging) =======================\\
 const waves = document.querySelector(".waves");
 const percentBox = document.querySelector(".percent_box");
 const chargingPer = document.querySelector(".charging_per");
@@ -156,7 +156,7 @@ const getBatteryState = async () => {
   setInterval(async () => {
     const batteryState = await bridge.batterySys.batteryState();
 
-    if (batteryState.charging === false) {
+    if (batteryState.isCharging === false) {
       waves.classList.add("hide");
       thunderIcon.classList.add("hide");
     } else {
@@ -164,10 +164,10 @@ const getBatteryState = async () => {
       thunderIcon.classList.remove("hide");
     }
 
-    waves.style.bottom = `${batteryState.level * 100}%`;
-    percentBox.style.height = `${batteryState.level * 100}%`;
+    waves.style.bottom = `${batteryState.level}%`;
+    percentBox.style.height = `${batteryState.level}%`;
 
-    chargingPer.innerText = `${Math.round(batteryState.level * 100)}%`;
+    chargingPer.innerText = `${Math.round(batteryState.level)}%`;
   }, 1000);
 };
 //===========================================================\\
