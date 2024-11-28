@@ -16,6 +16,6 @@
 
 | Version |   Date    | Comment               |
 | ------- | --------- | --------------------- |
-|  1.1.1  | 2024-5-17 | Updating dependencies and fixing issue in battery_util package + updating UI |
+|  1.1.1  | 2024-11-28 | Updating dependencies and fixing issue in battery_util package + updating UI |
 |  1.0.1  | 2024-5-17 | Updating dependencies |
 |  1.0.0  | 2024-4-24 | Initial release       |
