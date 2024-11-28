@@ -35,6 +35,20 @@ const createMainWin = () => {
   // Dev tools
   if (isDev) mainWin.webContents.openDevTools({ mode: "detach" });
 
+  /*------ Mem garbage collection ------*/
+  mainWin.on("close", () => {
+    mainWin = null;
+  });
+
+  /*------ Disabling keyboard shortcuts ------*/
+  mainWin.webContents.on("before-input-event", (event, input) => {
+    if (input.control && input.key.toLowerCase() === "r") {
+      event.preventDefault();
+    } else if (input.control && input.key.toLowerCase() === "w") {
+      event.preventDefault();
+    }
+  });
+
   console.timeEnd("app_startup_time");
 };
 
@@ -128,3 +142,12 @@ ipc.on("check_updates_user", () => {
   checkUpdates();
 });
 //===================================================\\
+
+ipc.on("open_website", () => {
+  const shell = require("electron").shell;
+  shell.openExternal("https://energize-app.netlify.app");
+});
+ipc.on("open_github", () => {
+  const shell = require("electron").shell;
+  shell.openExternal("https://github.com/Malick-Tammal/ENERGIZE.git");
+});

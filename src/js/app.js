@@ -8,12 +8,7 @@
 
 console.log("\n");
 console.log(
-  "    _____ _   _ _____ ____   ____ ___ __________ \n",
-  "  | ____| \\ | | ____|  _ \\ / ___|_ _|__  / ____|\n",
-  "  |  _| |  \\| |  _| | |_) | |  _ | |  / /|  _|  \n",
-  "  | |___| |\\  | |___|  _ <| |_| || | / /_| |___ \n",
-  "  |_____|_| \\_|_____|_| \\_\\____ |___/____|_____|\n",
-  "                                                \n"
+  "  ______ _   _ ______ _____   _____ _____ ____________ \r\n |  ____| \\ | |  ____|  __ \\ / ____|_   _|___  /  ____|\r\n | |__  |  \\| | |__  | |__) | |  __  | |    / /| |__   \r\n |  __| | . ` |  __| |  _  /| | |_ | | |   / / |  __|  \r\n | |____| |\\  | |____| | \\ \\| |__| |_| |_ / /__| |____ \r\n |______|_| \\_|______|_|  \\_\\\\_____|_____/_____|______|\r\n                                                       \r\n                                                       "
 );
 console.log(
   "===================================================================="
@@ -25,12 +20,11 @@ console.log(
   "===================== Consider to contribute ======================"
 );
 console.log(
-  "======= Github repo : https://github.com/ADAMSKI-DZ/ENERGIZE ======="
+  "======= Github repo : https://github.com/Malick-Tammal/ENERGIZE.git ======="
 );
 console.log(
   "===================================================================="
 );
-console.log("\n");
 
 // Getting app name ========================================\\
 const appTitle = document.querySelector(".app_title");
@@ -64,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const settingsBtn = document.querySelector(".settings");
 const settingsBtnIcon = document.querySelector(".settings img");
 const settingsPanel = document.querySelector(".settings_panel");
+const SettingsOverlay = document.querySelector(".settings_overlay");
 
 settingsBtn.addEventListener("mouseenter", () => {
   settingsBtnIcon.src = "../asset/icons/Setting_icon_colored.png";
@@ -77,6 +72,12 @@ settingsBtn.addEventListener("mouseleave", () => {
 });
 settingsBtn.addEventListener("click", () => {
   settingsPanel.classList.toggle("hide");
+  SettingsOverlay.classList.toggle("hide");
+});
+SettingsOverlay.addEventListener("click", () => {
+  settingsPanel.classList.toggle("hide");
+  SettingsOverlay.classList.toggle("hide");
+  settingsBtnIcon.src = "../asset/icons/Setting_icon.png";
 });
 
 const autoScanBtn = document.querySelector(".auto_scan");
@@ -140,9 +141,11 @@ const batteryPage = document.querySelector(".battery_page");
 scanBtn.addEventListener("click", () => {
   console.time("Getting_data_time");
   console.log("Started scanning...");
-  loadingPage.classList.remove("hide");
   bridge.batterySys.scanPC();
+
   getBatteryState();
+
+  loadingPage.classList.remove("hide");
 });
 //=============================================================\\
 
@@ -152,7 +155,7 @@ const percentBox = document.querySelector(".percent_box");
 const chargingPer = document.querySelector(".charging_per");
 const thunderIcon = document.querySelector(".thunder_icon");
 
-const getBatteryState = async () => {
+const getBatteryState = () => {
   setInterval(async () => {
     const batteryState = await bridge.batterySys.batteryState();
 
@@ -167,7 +170,7 @@ const getBatteryState = async () => {
     waves.style.bottom = `${batteryState.level}%`;
     percentBox.style.height = `${batteryState.level}%`;
 
-    chargingPer.innerText = `${Math.round(batteryState.level)}%`;
+    chargingPer.innerText = `${batteryState.level}%`;
   }, 1000);
 };
 //===========================================================\\
@@ -208,14 +211,8 @@ bridge.batterySys.batteryData((data) => {
         data.fullChargeCapacity + data.measureUnit;
       designCapacityDom.innerText = data.designCapacity + data.measureUnit;
       batteryHealthNumDom.innerText = `${data.health}%`;
-      batteryHealthTxtDom.innerText = healthStatus(
-        data.fullChargeCapacity,
-        data.designCapacity
-      );
-      boxTwo.style.background = healthStatusColor(
-        data.fullChargeCapacity,
-        data.designCapacity
-      );
+      batteryHealthTxtDom.innerText = healthStatus(data.health);
+      boxTwo.style.background = healthStatusColor(data.health);
 
       loadingPage.classList.add("hide");
       batteryPage.classList.remove("hide");
@@ -250,15 +247,15 @@ const healthStatus = (health) => {
 // Adding health status color based on battery health percentage ==\\
 const healthStatusColor = (health) => {
   if (health >= 90) {
-    return "#19c219";
+    return "#06EB70";
   } else if (health >= 70 && health < 90) {
-    return "#84c219";
+    return "#E6DD11";
   } else if (health >= 50 && health < 70) {
-    return "#c2af19";
+    return "#E6A211";
   } else if (health >= 20 && health < 50) {
-    return "#c23819";
+    return "#E63B11";
   } else {
-    return "#000000";
+    return "#1D2A33";
   }
 };
 //===========================================================\\
@@ -279,6 +276,13 @@ githubButton.addEventListener("mouseenter", () => {
 });
 githubButton.addEventListener("mouseleave", () => {
   githubButton.src = "../asset/icons/Github_icon.png";
+});
+
+websiteButton.addEventListener("click", () => {
+  bridge.externalLinks.openWebsite();
+});
+githubButton.addEventListener("click", () => {
+  bridge.externalLinks.openGithub();
 });
 //===========================================================\\
 

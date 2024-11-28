@@ -49,75 +49,92 @@
         <img src="../asset/images/Loading animation.gif" alt="Loading" />
       </div>
       <div class="battery_page hide">
-        <div class="box_1">
-          <h2 class="laptop_model">?????</h2>
-          <div class="col">
-            <div class="text_col">
-              <p>Battery ID :</p>
-              <p class="battery_id data">?????</p>
+        <div class="battery_page_container">
+          <div class="box_1">
+            <h2 class="laptop_model">?????</h2>
+            <div class="col">
+              <div class="text_col">
+                <p>Battery ID :</p>
+                <p class="battery_id data">?????</p>
+              </div>
+              <div class="text_col">
+                <p>Model :</p>
+                <p class="battery_model data">?????</p>
+              </div>
             </div>
-            <div class="text_col">
-              <p>Model :</p>
-              <p class="battery_model data">?????</p>
+            <div class="col">
+              <div class="text_col">
+                <p>Serial Number :</p>
+                <p class="serial_number data">?????</p>
+              </div>
+              <div class="text_col">
+                <p>Cycle Count :</p>
+                <p class="cycle_count data">?????</p>
+              </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="text_col">
-              <p>Serial Number :</p>
-              <p class="serial_number data">?????</p>
-            </div>
-            <div class="text_col">
-              <p>Cycle Count :</p>
-              <p class="cycle_count data">?????</p>
-            </div>
-          </div>
-          <p>
-            Full Charge Capacity :
-            <span class="full_charge_capacity data">?????</span>
-          </p>
-          <p>
-            Design Capacity : <span class="design_capacity data">?????</span>
-          </p>
-        </div>
-        <div class="box_2">
-          <div class="battery_health">
-            <p class="battery_health_num"></p>
-            <p class="battery_health_txt"></p>
-          </div>
-        </div>
-        <div class="box_3">
-          <svg
-            class="waves"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 24 150 28"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <path
-                id="gentle-wave"
-                d="M-160 44c30 0 
-    58-18 88-18s
-    58 18 88 18 
-    58-18 88-18 
-    58 18 88 18
-    v44h-352z"
-              />
-            </defs>
-            <g class="parallax">
-              <use xlink:href="#gentle-wave" x="50" y="0" fill="#4579e2" />
-              <use xlink:href="#gentle-wave" x="50" y="3" fill="#3461c1" />
-              <use xlink:href="#gentle-wave" x="50" y="6" fill="#2d55aa" />
-            </g>
-          </svg>
-          <div class="percent_box"></div>
-          <div class="charging_con">
-            <h1 class="charging_per"></h1>
+            <p>
+              Full Charge Capacity :
+              <span class="full_charge_capacity data">?????</span>
+            </p>
+            <p>
+              Design Capacity : <span class="design_capacity data">?????</span>
+            </p>
             <img
-              class="thunder_icon hide"
-              src="../asset/icons/Thunder_icon.png"
-              alt="Thunder_icon"
+              class="details-overlay"
+              src="../asset/icons/Details_icon.png"
+              alt="Details_Icon"
             />
+          </div>
+          <div class="small-box-container">
+            <div class="box_2">
+              <div class="battery_health">
+                <p class="battery_health_num"></p>
+                <p class="battery_health_txt"></p>
+              </div>
+              <img
+                class="health-overlay"
+                src="../asset/icons/Health_icon.png"
+                alt="Health_icon"
+              />
+            </div>
+            <div class="box_3">
+              <svg
+                class="waves"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  <path
+                    id="gentle-wave"
+                    d="M-160 44c30 0 
+        58-18 88-18s
+        58 18 88 18 
+        58-18 88-18 
+        58 18 88 18
+        v44h-352z"
+                  />
+                </defs>
+                <g class="parallax">
+                  <use xlink:href="#gentle-wave" x="50" y="6" fill="#000000" />
+                </g>
+              </svg>
+              <div class="percent_box"></div>
+              <div class="charging_con">
+                <h1 class="charging_per"></h1>
+                <img
+                  class="thunder_icon hide"
+                  src="../asset/icons/Thunder_icon.png"
+                  alt="Thunder_icon"
+                />
+              </div>
+              <img
+                class="battery-overlay"
+                src="../asset/icons/Battery_icon.png"
+                alt="Battery_icon"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -125,11 +142,13 @@
         <h1>Battery not present or your device is unsupported</h1>
       </div>
       <div class="settings_panel hide">
-        <h2 class="settings_title">Settings</h2>
         <div class="top_panel">
           <div class="about con">
+            <div class="about_title">
+              <span></span>
+              <h1>About</h1>
+            </div>
             <div class="about_text">
-              <h2>About</h2>
               <p>
                 Meet Energize: Your laptop's essential battery diagnostic tool.
                 Optimize performance, prolong battery life effortlessly.
@@ -149,34 +168,40 @@
             </div>
           </div>
         </div>
-        <div class="big_separator"></div>
         <div class="bottom_panel">
-          <div class="auto_scan_resources_con con">
-            <p>Auto scan resources</p>
-            <span class="separator"></span>
-            <div class="radio_btn auto_scan">
-              <span></span>
+          <div class="settings_title">
+            <span></span>
+            <h1>Settings</h1>
+          </div>
+          <div class="settings_container">
+            <div class="auto_scan_resources_con con">
+              <p>Auto scan resources</p>
+              <span class="separator"></span>
+              <div class="radio_btn auto_scan">
+                <span></span>
+              </div>
             </div>
-          </div>
-          <div class="auto_check_updates con">
-            <p>Auto check for updates</p>
-            <span class="separator"></span>
-            <div class="radio_btn auto_check">
-              <span></span>
+            <div class="auto_check_updates con">
+              <p>Auto updates</p>
+              <span class="separator"></span>
+              <div class="radio_btn auto_check">
+                <span></span>
+              </div>
             </div>
-          </div>
-          <div class="check_updates_con con">
-            <p>Check for updates</p>
-            <span class="separator"></span>
-            <a href="#" class="btn check_updates">check</a>
-          </div>
-          <div class="app_version_con con">
-            <p>App version</p>
-            <span class="separator"></span>
-            <p class="app_version">????</p>
+            <div class="check_updates_con con">
+              <p>Check for updates</p>
+              <span class="separator"></span>
+              <a href="#" class="btn check_updates">check</a>
+            </div>
+            <div class="app_version_con con">
+              <p>App version</p>
+              <span class="separator"></span>
+              <p class="app_version">????</p>
+            </div>
           </div>
         </div>
       </div>
+      <div class="settings_overlay hide"></div>
     </div>
     <script src="./js/app.js"></script>
   </body>

@@ -37,6 +37,10 @@ const API = {
     checkUpdates: () => ipc.send("check_updates"),
     checkUpdatesUser: () => ipc.send("check_updates_user"),
   },
+  externalLinks: {
+    openGithub: () => ipc.send("open_github"),
+    openWebsite: () => ipc.send("open_website"),
+  },
 };
 
 contextBridge.exposeInMainWorld("bridge", API);

@@ -65,7 +65,7 @@ git clone https://github.com/Malick-Tammal/ENERGIZE.git
 npm install
 ```
 
-## Usage
+## Starting
 
 ```sh
 npm start

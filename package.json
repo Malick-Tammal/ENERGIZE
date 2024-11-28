@@ -1,7 +1,7 @@
 {
   "name": "energize",
-  "version": "1.0.1",
-  "description": "Get instant insights into your laptop battery's health with our diagnostic tool",
+  "version": "1.1.1",
+  "description": "ENERGIZE",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -15,7 +15,7 @@
     "url": "https://github.com/Malick-Tammal/ENERGIZE.git"
   },
   "devDependencies": {
-    "electron": "^33.1.0",
+    "electron": "^33.2.1",
     "electron-builder": "^25.1.8"
   },
   "build": {
@@ -33,7 +33,7 @@
     }
   },
   "dependencies": {
-    "battery_util": "^2.1.5",
+    "battery_util": "^2.2.5",
     "electron-store": "^8.2.0",
     "electron-updater": "^6.3.9",
     "v8-compile-cache": "^2.4.0"

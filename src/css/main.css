@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
   background: var(--primary-color);
-  border-radius: 15px;
+  border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -190,17 +190,26 @@ nav.top_bar {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0rem 1rem;
 }
 .battery_page.hide {
   opacity: 0;
   visibility: hidden;
 }
+.battery_page_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  gap: 15px;
+}
 .box_1 {
-  width: 95%;
-  height: 51%;
+  width: 100%;
+  height: 50%;
   background: var(--secondary-color);
-  border-radius: 25px;
+  border-radius: 10px;
   transform: translate(0);
   transition: transform 0.5s 0.2s ease;
   display: flex;
@@ -234,20 +243,36 @@ nav.top_bar {
 .text_col p:nth-child(2) {
   margin-left: 0.5rem;
 }
+.details-overlay {
+  position: absolute;
+  right: -1.2rem;
+  bottom: -2rem;
+  width: 55%;
+  z-index: -1;
+  mix-blend-mode: soft-light;
+  opacity: 0.2;
+}
+
+.small-box-container {
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .box_2,
 .box_3 {
-  width: 46%;
-  height: 40%;
+  width: 48.5%;
+  height: 100%;
   background: var(--secondary-color);
-  margin-top: -1rem;
-  border-radius: 25px;
+  border-radius: 10px;
   transform: translate(0);
   transition: transform 0.5s 0.3s ease;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: end;
 }
 .battery_page.hide .box_1 {
   transform: translate(0, -100%);
@@ -260,18 +285,8 @@ nav.top_bar {
 .parallax > use {
   animation: move-forever 12s linear infinite;
   &:nth-child(1) {
-    animation-delay: -2s;
-    fill: #0f730f;
-  }
-  &:nth-child(2) {
-    animation-delay: -2s;
-    animation-duration: 5s;
-    fill: #109810;
-  }
-  &:nth-child(3) {
-    animation-delay: -4s;
-    animation-duration: 3s;
-    fill: #19c219;
+    animation-duration: 4s;
+    fill: var(--lime-green);
   }
 }
 
@@ -299,8 +314,11 @@ svg.waves.hide {
 .percent_box {
   width: 100%;
   height: 0;
-  background: #19c219;
+  background: var(--lime-green);
   margin-bottom: 0rem;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
 }
 .charging_con {
   width: 100%;
@@ -337,13 +355,29 @@ svg.waves.hide {
   letter-spacing: 0.5rem;
   margin-left: 0.5rem;
 }
+.battery-overlay {
+  position: absolute;
+  right: -9rem;
+  bottom: -6.5rem;
+  width: 155%;
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+}
+.health-overlay {
+  position: absolute;
+  right: -3.1rem;
+  bottom: -2.5rem;
+  width: 115%;
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+}
 .unsupported_device {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 94%;
   background: var(--primary-color);
-  z-index: 10;
+  z-index: 7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -357,15 +391,15 @@ svg.waves.hide {
 .settings_panel {
   width: 22rem;
   position: absolute;
-  top: 3.1rem;
-  left: 1rem;
+  top: 3.2rem;
+  left: 0.9rem;
   font-size: 0.9rem;
   background: var(--secondary-color);
   z-index: 9;
-  border-radius: 15px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   box-shadow: 10px 4px 9px 0px rgb(0 0 0 / 12%);
   transform: translateY(0%);
   transition: all 0.8s cubic-bezier(0.23, 0.01, 0.23, 1.02);
@@ -373,31 +407,26 @@ svg.waves.hide {
 .settings_panel.hide {
   transform: translateY(-150%);
 }
-.top_panel,
-.bottom_panel {
-  width: 100%;
-}
 .top_panel {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 .con {
   display: flex;
   justify-content: space-between;
   position: relative;
-  margin-top: 1.5rem;
+  margin-top: 1.8rem;
 }
 .con:first-of-type {
   margin-top: 0;
 }
 .separator {
-  width: 2px;
+  width: 3px;
   height: 100%;
   border-radius: 2px;
-  background: var(--white-color);
+  background: var(--primary-color);
   position: absolute;
   left: 60%;
   transform: translate(-50%);
-  opacity: 0.3;
 }
 .radio_btn {
   width: 2.5rem;
@@ -421,6 +450,7 @@ svg.waves.hide {
   border-radius: 100%;
   transition: all 0.1s linear;
   transform: translateX(0.2rem);
+  margin-bottom: 1px;
 }
 .radio_btn.active span {
   transform: translateX(1.3rem);
@@ -431,7 +461,7 @@ svg.waves.hide {
     var(--yallow-color) 0%,
     var(--red-color) 100%
   );
-  padding: 0.1rem 0.5rem;
+  padding: 0.1rem 0.3rem;
   font-size: 0.85rem;
   font-family: "Poppins Medium";
   border-radius: 0.2rem;
@@ -444,44 +474,72 @@ svg.waves.hide {
 }
 .about_text {
   text-align: center;
-}
-.about_text h2 {
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
+  margin-top: 1.5rem;
 }
 .about_text p {
   line-height: 25px;
 }
-.settings_title {
-  position: relative;
-  top: -1rem;
-  letter-spacing: 1.5px;
-  font-family: "Poppins Regular";
-  opacity: 0.7;
-  font-size: 1.1rem;
-}
 .about_social {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  justify-content: space-around;
+  margin-top: 1rem;
 }
 .about_social img {
   width: 3.2rem;
   cursor: pointer;
 }
-.big_separator {
-  width: 90%;
-  height: 2px;
-  position: absolute;
-  left: 50%;
-  top: 57%;
-  transform: translate(-50%);
-  background: var(--white-color);
-  border-radius: 1rem;
-  opacity: 0.3;
+.about_title {
+  display: flex;
+  height: 2rem;
+  align-items: center;
+}
+.about_title span {
+  height: 100%;
+  width: 0.4rem;
+  background: var(--primary-color);
+}
+.about_title h1 {
+  font-size: 1.2rem;
+  font-family: "Poppins Bold";
+  letter-spacing: 1px;
+  margin-left: 0.8rem;
 }
 .app_version {
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+}
+.settings_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  z-index: 8;
+  opacity: 0.5;
+  visibility: visible;
+  transition: all 0.3s;
+}
+.settings_overlay.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+.settings_title {
+  display: flex;
+  height: 2rem;
+  align-items: center;
+}
+.settings_title span {
+  height: 100%;
+  width: 0.4rem;
+  background: var(--primary-color);
+}
+.settings_title h1 {
+  font-size: 1.2rem;
+  font-family: "Poppins Bold";
+  letter-spacing: 1px;
+  margin-left: 0.8rem;
+}
+.settings_container {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 1.5rem;
 }
